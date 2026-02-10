@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scan</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h1>🛡️ Fraud Scanner</h1>
+
+<a href="/dashboard">⬅ Back to Dashboard</a>
+
+<form method="POST" enctype="multipart/form-data">
+    <input type="file" name="file" required>
+    <button>Scan</button>
+</form>
+
+{% if alert %}
+<div class="alert">
+🚨 HIGH RISK FRAUD TRANSACTIONS DETECTED!
+</div>
+{% endif %}
+
+{% if results %}
+<table>
+<tr>
+{% for k in results[0].keys() %}
+<th>{{ k }}</th>
+{% endfor %}
+</tr>
+
+{% for row in results %}
+<tr>
+{% for v in row.values() %}
+<td>{{ v }}</td>
+{% endfor %}
+</tr>
+{% endfor %}
+</table>
+{% endif %}
+
+</body>
+</html>

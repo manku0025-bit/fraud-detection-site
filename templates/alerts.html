@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fraud Alerts</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>🚨 Fraud Alerts</h2>
+
+    <a href="/dashboard" class="back-btn">⬅ Back to Dashboard</a>
+
+    {% if alerts %}
+    <table class="alert-table">
+        <tr>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Fraud Score</th>
+            <th>Risk Level</th>
+        </tr>
+
+        {% for a in alerts %}
+        <tr>
+            <td>{{ a.Amount }}</td>
+            <td>{{ a.Fraud_Status }}</td>
+            <td>{{ a.Fraud_Score }}</td>
+            <td>{{ a.Risk_Level }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% else %}
+        <p class="no-alert">✅ No fraud transactions detected.</p>
+    {% endif %}
+
+</div>
+
+</body>
+</html>

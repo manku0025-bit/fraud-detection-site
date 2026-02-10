@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - Fraud Detection</title>
+</head>
+<body>
+
+<link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+<div class="box">
+<h2>Login</h2>
+<form method="post">
+<input type="email" name="email" placeholder="Email">
+<input type="password" name="password" placeholder="Password">
+<button>Login</button>
+</form>
+
+</div>
+
+<a href="/forgot">Forgot Password?</a><br><br>
+<a href="/register">Create New Account</a>
+
+{% for msg in get_flashed_messages() %}
+<p style="color:red">{{msg}}</p>
+{% endfor %}
+
+</body>
+</html>
